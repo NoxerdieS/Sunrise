@@ -27,19 +27,6 @@ while ($row = $query->fetch()):
     </div>
 <?php endwhile; ?>
 
-    <div class="admin__popup">
-      <div class="admin__contentContainer">
-        <button class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></button>
-        <form id="create-product-form" method="post">
-        <input type="hidden" name="filename" value="orders">
-            <!-- <div class="admin__formContainer">
-                <label for="name">Nazwa kategorii:</label>
-                <input type="text" name="name" id="name" class="admin__contentContainer--input" placeholder="Nazwa kategorii">
-            </div> -->
-            <button type="submit" class="admin__contentContainer--addProduct">Dodaj</button>
-        </form>
-      </div>
-    </div>
 </div>
 <?php
 $body=ob_get_contents(); 

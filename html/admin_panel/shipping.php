@@ -34,7 +34,7 @@ while ($row = $query->fetch()){
 ?>
     <div class="admin__popup">
       <div class="admin__contentContainer">
-        <a href="./index.php" class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></a>
+        <a href="./shipping.php" class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></a>
         <form id="create-product-form" method="post">
         <input type="hidden" name="filename" value="shipping">
             <div class="admin__formContainer">

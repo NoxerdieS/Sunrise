@@ -1,7 +1,7 @@
 <?php
-session_start();
+// session_start();
 require_once('../../php/dblogin.php');
-
+include '../menu_component.php';
 $sql = 'select order_details.id, total, payment_name, shipper_name from order_details inner join payment on order_details.payment_id=payment.id inner join shipping on order_details.shipping_id=shipping.id where order_details.id = ?';
 $query = $pdo->prepare($sql);
 $query->execute([$_GET['item']]);
@@ -42,8 +42,16 @@ ob_start();
 </head>
 
 <body>
+    <?php echo $nav; ?>
+<main class="user admin">
+  <section class="user__menu admin__menu">
+    <a href="./orders.php" class="user__menu--item admin__menu--item">Zarządzanie zamówieniami</a>
+  </section>
 
-    <form class="admin__contentContainer--userForm">
+  <section class="user__section admin__section">
+    <div class="admin__contentContainer admin__editContainer">
+    <form class="admin__contentContainer--userForm" id="create-product-form" method="post" action="../../php/admin_panel/edit_order.php">
+        <input type="hidden" name="filename" value="orders">
         <div class="admin__formContainer">
             <label for="order_id">Numer zamówienia:</label>
             <input type="text" name="order_id" id="order_id" class="admin__contentContainer--input" placeholder="Numer zamówienia" value="<?= $order_info['id'] ?>">
@@ -109,9 +117,13 @@ ob_start();
                 </div>
             <?php endwhile; ?>
         </div>
-        <button type="submit" class="admin__contentContainer--addProduct">Zatwierdź</button>
+        <button type="submit" class="button">Zatwierdź</button>
         <a href="./orders.php" class="linkButton">Wróć</a>
     </form>
+    </div>
+  </section>
+</main>
+    <script src="../../js/admin_panel.js"></script>
 </body>
 <?php
 $details = ob_get_contents();

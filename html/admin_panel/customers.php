@@ -2,43 +2,43 @@
 
 ob_start();
 require_once('../../php/dblogin.php');
-$pdo = new PDO('mysql:host='.$host.';dbname='.$db.';port=3306', $user, $pass);
+$pdo = new PDO('mysql:host=' . $host . ';dbname=' . $db . ';port=3306', $user, $pass);
 
 ?>
 <h1 class="admin__headline">Klienci</h1>
 <div class="admin__add">
-        <button class="admin__add--addBtn">Dodaj</button>
-        <div class="nav__user--search admin__add--search">
-          <input type="text" placeholder="Wyszukaj..." id="searchBar"/><i id="searchBtn" class="fa-solid fa-magnifying-glass"></i>
-        </div>
+    <button class="admin__add--addBtn">Dodaj</button>
+    <div class="nav__user--search admin__add--search">
+        <input type="text" placeholder="Wyszukaj..." id="searchBar" /><i id="searchBtn" class="fa-solid fa-magnifying-glass"></i>
+    </div>
 </div>
 <div class="admin__products">
-<?php
-$query = $pdo -> query('select login from user');
-while ($row = $query->fetch()){
-    $param = http_build_query([
-        'item' => $row['login']
-    ]);
-    $delParams = http_build_query([
-        'item' => $row['login'],
-        'table' => 'user',
-        'column' => 'login'
-    ]);
-    $html = '<div class="admin__product">
-    <p class="admin__product--name">'.$row['login'].'</p>
-    <a href="./edit_customer.php?'.$param.'" class="admin__add--addBtn admin__product--edit">Edytuj dane</a>
-    <a href="../../php/admin_panel/delete_item.php?'.$delParams.'" class="admin__add--addBtn admin__product--delete">Usuń</a>
+    <?php
+    $query = $pdo->query('select login from user');
+    while ($row = $query->fetch()) {
+        $param = http_build_query([
+            'item' => $row['login']
+        ]);
+        $delParams = http_build_query([
+            'item' => $row['login'],
+            'table' => 'user',
+            'column' => 'login'
+        ]);
+        $html = '<div class="admin__product">
+    <p class="admin__product--name">' . $row['login'] . '</p>
+    <a href="./edit_customer.php?' . $param . '" class="admin__add--addBtn admin__product--edit">Edytuj dane</a>
+    <a href="../../php/admin_panel/delete_item.php?' . $delParams . '" class="admin__add--addBtn admin__product--delete">Usuń</a>
     </div>';
-    echo $html;
-}
-?>
+        echo $html;
+    }
+    ?>
 
-<div class="admin__popup">
-      <div class="admin__contentContainer admin__contentContainerUser">
-        <button class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></button>
-        <form class="admin__contentContainer" id="create-product-form" method="post">
-            <!-- <div class="admin__formContainersBox"> -->
-            <input type="hidden" name="filename" value="customers">
+    <div class="admin__popup">
+        <div class="admin__contentContainer admin__contentContainerUser">
+            <button class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></button>
+            <form class="admin__contentContainer" id="create-product-form" method="post">
+                <!-- <div class="admin__formContainersBox"> -->
+                <input type="hidden" name="filename" value="customers">
                 <div class="admin__formContainer">
                     <label for="name">Imię:</label>
                     <input type="text" name="firstname" id="firstname" class="admin__contentContainer--input" placeholder="Imię">
@@ -93,17 +93,17 @@ while ($row = $query->fetch()){
                         <option value="0">Nie</option>
                     </select>
                 </div>
-            <!-- </div> -->
-            <div class="admin__formContainer">
-                <button type="submit" class="admin__contentContainer--addProduct">Dodaj</button>
-            </div>
-        </form>
-      </div>
+                <!-- </div> -->
+                <div class="admin__formContainer">
+                    <button type="submit" class="admin__contentContainer--addProduct">Dodaj</button>
+                </div>
+            </form>
+        </div>
     </div>
-    </div>
+</div>
 <?php
 
-$body=ob_get_contents(); 
+$body = ob_get_contents();
 ob_end_clean();
 
 require "./admin_panel.php";
