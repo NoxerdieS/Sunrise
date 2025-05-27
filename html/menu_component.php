@@ -131,7 +131,7 @@ ob_start();
     const navSearchBtn = document.querySelector('#navSearchBtn')
 
     navSearchBtn.addEventListener('click', () => {
-	  window.location.replace(`/html/category_pages/product_search.php?searchValue=${navSearchBar.value}`)
+	  window.location.replace(`/sklep_internetowy/html/category_pages/product_search.php?searchValue=${navSearchBar.value}`)
 })
   </script>
 <?php
