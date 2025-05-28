@@ -729,7 +729,6 @@ p {
 			margin: 0;
 		}
 		&--price {
-
 			font-size: 2.5rem;
 			margin: 0;
 		}
@@ -1138,7 +1137,6 @@ p {
 		span {
 			font-weight: bold;
 		}
-
 	}
 }
 
@@ -1720,7 +1718,7 @@ p {
 			}
 		}
 	}
-	
+
 	&__menu {
 		display: flex;
 		flex-direction: column;
@@ -1813,27 +1811,35 @@ p {
 	}
 	&__popup {
 		visibility: hidden;
-		position: absolute;
-		height: 90%;
-		width: 720px;
+		position: fixed; // zamiast absolute – dzięki temu popup zawsze w centrum viewportu
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+
+		max-width: 90%;
+		width: auto; 
+		min-width: 400px; 
+		max-height: 95vh; 
+		height: auto; 
+
 		background-color: $secondary-color;
 		border-radius: 8px;
 		z-index: 40;
-		box-shadow: 0px 0px 10px 5px #282d50;
-		overflow: scroll;
-		overflow-x: hidden;
+		box-shadow: 0 0 10px 5px #282d50;
 
-		&--shadow {
-			visibility: hidden;
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background-color: rgba($color: #000000, $alpha: 0.3);
-			z-index: 9;
-		}
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding: 20px;
+	}
+	&__popup--shadow {
+		visibility: hidden;
+		position: fixed; 
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.3);
+		z-index: 39;
 	}
 
 	&__formContainersBox {
@@ -1894,18 +1900,17 @@ p {
 			width: 99%;
 			align-content: center;
 		}
-
 		&--closeBtn {
 			position: fixed;
-			right: 0;
-			top: 0;
-			margin: 10px;
-			padding: 10px;
-			font-size: 2.5rem;
-			border: none;
+			top: 10px;
+			right: 10px;
+			padding: 5px;
+			font-size: 2rem;
 			background: none;
+			border: none;
 			color: $main-white;
 			cursor: pointer;
+			z-index: 41;
 		}
 
 		label {
@@ -1967,8 +1972,13 @@ p {
 	}
 	&__contentContainerUser {
 		height: auto;
-		min-height: 1000px;
+		min-height: 800px;
 	}
+	&__contentContainerSmall {
+		height: auto;
+		min-height: 300px;
+	}
+
 
 	&__editContainer {
 		width: 650px;
@@ -2176,7 +2186,6 @@ p {
 			display: flex;
 			flex-direction: column;
 			gap: 10px;
-			
 
 			.delivery-option {
 				position: relative;
@@ -2259,7 +2268,6 @@ p {
 				&::placeholder {
 					font-size: 2rem;
 				}
-
 			}
 			.cart-error {
 				visibility: hidden;
@@ -2420,7 +2428,7 @@ p {
 			width: 80%;
 			height: 400px;
 			top: 68px;
-			
+
 			&--one {
 				top: 50px;
 				left: 60px;

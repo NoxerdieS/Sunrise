@@ -110,12 +110,11 @@ if (addForm) {
 				}
 			}
 
-			formData.append(
-				'addressId',
-				document.querySelector('input[name="addressId"]').value
-			);
+			const addressIdInput = document.querySelector('input[name="addressId"]');
+			if (addressIdInput) {
+				formData.append('addressId', addressIdInput.value);
+			}
 		} else if (filename === 'orders') {
-      console.log("Walidacja zamówienia aktywna");
 			const orderId = document.querySelector('#order_id')?.value.trim();
 			const total = document.querySelector('#total')?.value.trim();
 			const shipping = document.querySelector('#shipping')?.value.trim();
@@ -150,8 +149,13 @@ if (addForm) {
 		}
 
 		let target = '../../php/admin_panel/add_item.php';
-		if (filename === 'customers') {
+		if (
+			filename === 'customers' &&
+			document.querySelector('input[name="oldLogin"]')
+		) {
 			target = '../../php/admin_panel/edit_customer.php';
+		} else if (filename === 'orders') {
+			target = '../../php/admin_panel/edit_order.php';
 		}
 
 		fetch(target, {
@@ -161,6 +165,8 @@ if (addForm) {
 			.then(() => {
 				if (filename === 'customers') {
 					window.location.href = '../../html/admin_panel/customers.php';
+				} else if (filename === 'orders') {
+					window.location.href = '../../html/admin_panel/orders.php';
 				} else {
 					window.location.reload();
 				}

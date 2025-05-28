@@ -34,10 +34,9 @@ $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $db . ';port=3306', $user, $
     ?>
 
     <div class="admin__popup">
+        <button class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></button>
         <div class="admin__contentContainer admin__contentContainerUser">
-            <button class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></button>
             <form class="admin__contentContainer" id="create-product-form" method="post">
-                <!-- <div class="admin__formContainersBox"> -->
                 <input type="hidden" name="filename" value="customers">
                 <div class="admin__formContainer">
                     <label for="name">Imię:</label>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="../img/logo_transparent.png"
+      href="../../img/logo_transparent.png"
       type="image/x-icon"
     />
 

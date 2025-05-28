@@ -63,7 +63,7 @@ if (isset($_POST['filename'])) {
         $pdo->prepare($sql)->execute([$_POST['name'], $_POST['cost'] / 100]);
     } else if ($file == 'shipping') {
         $sql = 'insert into shipping(shipper_name, shipping_cost, isActive) values(?, ?, 1)';
-        $pdo->prepare($sql)->execute([$_POST['name'], $_POST['cost'] / 100]);
+        $pdo->prepare($sql)->execute([$_POST['name'], $_POST['cost']]);
     } else if ($file == 'customers') {
         if ($_POST['password'] == $_POST['password2']) {
             $sql = 'insert into address(city, postal, address) values(?, ?, ?)';

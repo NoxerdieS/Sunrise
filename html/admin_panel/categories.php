@@ -29,7 +29,7 @@ while ($row = $query->fetch()){
 }
 ?>
     <div class="admin__popup">
-      <div class="admin__contentContainer">
+      <div class="admin__contentContainer admin__contentContainerSmall">
         <button class="admin__contentContainer--closeBtn"><i class="fa-solid fa-x"></i></button>
         <form id="create-product-form" method="post">
         <input type="hidden" name="filename" id="filename" value="categories">

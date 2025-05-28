@@ -52,6 +52,8 @@ ob_start();
             <div class="admin__contentContainer admin__editContainer">
                 <form class="admin__contentContainer--userForm" id="create-product-form" method="post" action="../../php/admin_panel/edit_order.php">
                     <input type="hidden" name="filename" value="orders">
+                    <input type="hidden" name="address_id" value="<?= $user_info['address_id'] ?>">
+
                     <div class="admin__formContainer">
                         <label for="order_id">Numer zamówienia:</label>
                         <input type="text" name="order_id" id="order_id" class="admin__contentContainer--input" placeholder="Numer zamówienia" value="<?= $order_info['id'] ?>">

@@ -5,6 +5,8 @@ $orderId = $_POST['order_id'] ?? '';
 $total = $_POST['total'] ?? '';
 $shipping = $_POST['shipping'] ?? '';
 $payment = $_POST['payment'] ?? '';
+$addressId = $_POST['address_id'] ?? '';
+
 
 $firstname = $_POST['firstname'] ?? '';
 $lastname = $_POST['lastname'] ?? '';
