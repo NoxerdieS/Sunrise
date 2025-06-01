@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']){
+      header('Location: ../../index.php');
+    }
     require_once('../../php/dblogin.php');
 
     $sql = 'select order_details.id, total, payment_name, shipper_name from order_details inner join payment on order_details.payment_id=payment.id inner join shipping on order_details.shipping_id=shipping.id where order_details.id = ?';
@@ -90,6 +93,7 @@
             <?php endwhile; ?>
         </div>
 </form>
+<button class="admin__contentContainer--closeBtn closeBtn" id="closeBtn"><i class="fa-solid fa-x"></i></button>
 <?php
 $details = ob_get_contents();
 ob_end_clean();

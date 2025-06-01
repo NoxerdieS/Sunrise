@@ -7,7 +7,7 @@ $query = $pdo->prepare($sql);
 $query->execute([$_GET['item']]);
 $order_info = $query->fetch();
 
-$sql = 'select firstname, lastname, mail, telephone, address_id, order_id, invoice_name, invoice_mail, invoice_telephone, invoice_address_id from order_data where order_id = ?';
+$sql = 'select firstname, lastname, mail, telephone, address_id, order_id, status, invoice_name, invoice_mail, invoice_telephone, invoice_address_id from order_data where order_id = ?';
 $query = $pdo->prepare($sql);
 $query->execute([$_GET['item']]);
 $user_info = $query->fetch();
@@ -98,6 +98,20 @@ ob_start();
                         <label for="city">Miasto:</label>
                         <input type="text" name="city" id="city" class="admin__contentContainer--input" placeholder="Miasto" value="<?= $address_info['city'] ?>">
                     </div>
+                    <?php
+                    $status = $user_info['status'] ?? 0;
+
+                    ?>
+                    <div class="admin__formContainer">
+                        <label for="status">Status zamówienia:</label>
+                        <select name="status" id="status" class="admin__contentContainer--input">
+                            <option value="0" <?= $user_info['status'] == 0 ? 'selected' : '' ?>>W realizacji</option>
+                            <option value="1" <?= $user_info['status'] == 1 ? 'selected' : '' ?>>Zrealizowane</option>
+                            <option value="2" <?= $user_info['status'] == 2 ? 'selected' : '' ?>>Zwrócone</option>
+                        </select>
+
+                    </div>
+
                     <div class="order__delivery order__productBox">
                         <?php
                         $sql = 'select product_id, quantity from order_product where order_id = ?';

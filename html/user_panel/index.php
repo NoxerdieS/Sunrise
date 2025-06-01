@@ -6,13 +6,9 @@ require_once('../../php/dblogin.php');
 <h1 class="admin__headline">Zamówienia</h1>
 <div class="admin__products">
 <?php
-$sql = 'select id from user where login like ?';
+$sql = 'select user_order.order_id, status from user_order inner join order_data on user_order.order_id=order_data.order_id where user_id = ?';
 $query = $pdo->prepare($sql);
-$query -> execute([$_SESSION['login']]);
-$user_id = $query -> fetchColumn();
-$sql = 'select order_id from user_order where user_id = ?';
-$query = $pdo->prepare($sql);
-$query -> execute([$user_id]);
+$query -> execute([$_SESSION['userId']]);
 while ($row = $query->fetch()):
     $param = http_build_query([
         'item' => $row['order_id']
@@ -25,7 +21,19 @@ while ($row = $query->fetch()):
 ?>
     <div class="admin__product">
     <p class="admin__product--name">Numer zamówienia: <?=$row['order_id']?></p>
-    <button class="details admin__add--addBtn admin__product--delete">Szczegóły</button>
+    <?php
+    if($row['status'] == 0){
+        echo '<p>W TRAKCIE</p>';
+    }elseif($row['status'] == 1){
+        echo '<p>ZREALIZOWANE</p>';
+    }elseif($row['status'] == 2){
+        echo '<p>ZWRÓCONE</p>';
+    }
+    ?>
+    <a class="details admin__add--addBtn admin__product--edit">Szczegóły</a>
+    <?php if($row['status'] != 2): ?>
+    <a class="return admin__add--addBtn admin__product--delete">Zwróć</a>
+    <?php endif; ?>
     <input type="hidden" value="<?=$row['order_id']?>">
     </div>
     <?php endwhile; ?>

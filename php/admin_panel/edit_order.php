@@ -2,6 +2,7 @@
 require_once('../dblogin.php');
 
 $orderId = $_POST['order_id'] ?? '';
+$status = $_POST['status'] ?? '';
 $total = $_POST['total'] ?? '';
 $shipping = $_POST['shipping'] ?? '';
 $payment = $_POST['payment'] ?? '';
@@ -37,10 +38,10 @@ $stmt->execute([$city, $postcode, $address, $addressId]);
 
 $stmt = $pdo->prepare('
     UPDATE order_data 
-    SET firstname = ?, lastname = ?, mail = ?, telephone = ? 
+    SET firstname = ?, lastname = ?, mail = ?, telephone = ?, status = ? 
     WHERE order_id = ?
 ');
-$stmt->execute([$firstname, $lastname, $email, $phone, $orderId]);
+$stmt->execute([$firstname, $lastname, $email, $phone, $status, $orderId]);
 
 
 $stmt = $pdo->prepare('

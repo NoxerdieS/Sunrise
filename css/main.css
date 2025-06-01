@@ -1818,6 +1818,10 @@ p {
   border: 2px solid rgb(38, 163, 201);
   border-radius: 8px;
 }
+.admin__contentContainer--textareaReturn {
+  height: 300px;
+  width: 600px;
+}
 .admin__contentContainer--file {
   height: 50px;
   width: 230px;

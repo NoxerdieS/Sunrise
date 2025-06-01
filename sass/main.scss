@@ -1939,6 +1939,11 @@ p {
 			border-radius: 8px;
 		}
 
+		&--textareaReturn{
+			height: 300px;
+			width: 600px;
+		}
+
 		&--file {
 			height: 50px;
 			width: 230px;
@@ -1995,6 +2000,8 @@ p {
 		overflow: scroll;
 		overflow-x: hidden;
 	}
+
+
 
 	&__categories {
 		display: flex;
