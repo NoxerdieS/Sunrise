@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
             });
 
             if (visible === 0) {
-                productsContainer.innerHTML = "Nie znaleziono produktów spełniających wymagania. Przepraszamy.";
+                productsContainer.innerHTML = '<p style="font-size:2.5rem;">Nie znaleziono produktów spełniających wymagania. Przepraszamy.</p>';
             }
         })
         .catch(err => {

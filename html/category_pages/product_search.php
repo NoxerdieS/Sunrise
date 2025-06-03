@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link
-		rel="shortcut icon"
-		href="../../img/logo_transparent.png"
-		type="image/x-icon" />
+  <link
+    rel="shortcut icon"
+    href="../../img/logo_transparent.png"
+    type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -45,25 +45,41 @@
         <?php
         require_once('../../php/dblogin.php');
         $searchValue = '%' . $_GET['searchValue'] . '%';
-        $sql = 'select product.id, product_name, price, path from product inner join photos on product.photo_id = photos.id where product_name like ?';
+        $sql = 'SELECT product.id, product_name, price, path
+          FROM product
+          INNER JOIN photos ON product.photo_id = photos.id
+          WHERE product_name LIKE ?';
         $query = $pdo->prepare($sql);
         $query->execute([$searchValue]);
-        while ($row = $query->fetch()):
-          $filename = str_replace(' ', '-', $row['product_name']);
+
+        $rows = $query->fetchAll();
+
+        if (count($rows) > 0):
+          foreach ($rows as $row):
+            $filename = str_replace(' ', '-', $row['product_name']);
         ?>
-          <a href="../products/<?= $filename ?>.php" class="products__product" id="<?= $row['id'] ?>">
-            <img src="<?= $row['path'] ?>" alt="" class="products__product--image">
-            <p class="products__product--name"><?= $row['product_name'] ?></p>
-            <p class="products__product--price"><?= $row['price'] ?> zł</p>
-            <button class="products__product--addToCart">Dodaj do koszyka</button>
-          </a>
-        <?php endwhile; ?>
+            <a href="../products/<?= $filename ?>.php" class="products__product" id="<?= $row['id'] ?>">
+              <img src="<?= $row['path'] ?>" alt="" class="products__product--image">
+              <p class="products__product--name"><?= htmlspecialchars($row['product_name'], ENT_QUOTES, 'UTF-8') ?></p>
+              <p class="products__product--price"><?= number_format($row['price'], 2, ',', ' ') ?> zł</p>
+              <button class="products__product--addToCart">Dodaj do koszyka</button>
+            </a>
+          <?php
+          endforeach;
+        else:
+          ?>
+          <p>
+            Brak produktów do wyświetlenia.
+          </p>
+        <?php endif; ?>
       </div>
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="../../js/category.js"></script>
+  <script src="../../js/filter.js"></script>
   <script src="../../js/product_sort.js"></script>
+  
 </body>
 
 </html>
