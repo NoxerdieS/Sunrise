@@ -84,8 +84,8 @@ session_start();
 					<a href="./html/category_pages/strong-tequila.php" class="link link-animation">Tequila</a>
 				</div>
 				<div class="nav__dropdown--right">
-					<img src="./img/placeholder_image.jpg" alt="">
-					<p>Lorem ipsum, quia dol</p>
+					<img src="./img/whisky.png" alt="">
+					<p>Singleton</p>
 					<p>150zł</p>
 				</div>
 			</div>
@@ -98,8 +98,8 @@ session_start();
 					<a href="./html/category_pages/wine-sparkling.php" class="link link-animation">Musujące</a>
 				</div>
 				<div class="nav__dropdown--right">
-					<img src="./img/placeholder_image.jpg" alt="">
-					<p>Lorem ipsum, quia dol</p>
+					<img src="./img/wine.png" alt="">
+					<p>Wino</p>
 					<p>150zł</p>
 				</div>
 			</div>
@@ -113,9 +113,9 @@ session_start();
 					<a href="./html/category_pages/beer-pilzner.php" class="link link-animation">Pilzner</a>
 				</div>
 				<div class="nav__dropdown--right">
-					<img src="./img/placeholder_image.jpg" alt="">
-					<p>Lorem ipsum, quia dol</p>
-					<p>150zł</p>
+					<img src="./img/piwo.jpg" alt="" width="200px">
+					<p>Corona Extra</p>
+					<p>6zł</p>
 				</div>
 			</div>
 			<a href="./html/category_pages/courses.php" class="nav__item link link-animation courses">Kursy</a>

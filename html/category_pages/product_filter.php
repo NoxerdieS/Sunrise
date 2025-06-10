@@ -49,7 +49,7 @@ SQL;
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$category_id]);
-    var_dump($stmt->fetchAll());
+    // var_dump($stmt->fetchAll());
     // var_dump($category_id);
     while ($paramRow = $stmt->fetchColumn()):
     ?>

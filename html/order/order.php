@@ -212,7 +212,7 @@ if (isset($_SESSION['cart']) && empty($_SESSION['cart'])) {
             ?>
             <p class="price"><?= $total ?> zł</p>
           </div>
-          <button id="orderBtn" class="cart__priceSection--buyBtn">Przejdź do podsumowania<i class="ti ti-chevron-right"></i></button>
+          <button id="orderBtn" class="cart__priceSection--buyBtn">Złóż zamówienie<i class="ti ti-chevron-right"></i></button>
         </div>
       </div>
     </section>

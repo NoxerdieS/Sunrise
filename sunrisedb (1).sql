@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Cze 03, 2025 at 09:04 PM
+-- Generation Time: Cze 10, 2025 at 07:43 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.1.17
 
@@ -47,7 +47,8 @@ INSERT INTO `address` (`id`, `city`, `postal`, `address`, `create_date`, `mod_da
 (28, 'Miasto', '12-121', 'ulica 12', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (29, 'Miasto', '12-121', 'ulica 12', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (30, 'Miasto', '12-121', 'ulica 12', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(31, 'Miasto', '12-121', 'ulica 12', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(31, 'Miasto', '12-121', 'ulica 12', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'sdad', '11-111', 'dsadsa 123', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,8 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `category_name`) VALUES
 (1, 'Wódka'),
 (2, 'Whisky'),
-(6, 'Gin');
+(6, 'Gin'),
+(14, 'wino wytrawne');
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,9 @@ INSERT INTO `order_data` (`id`, `firstname`, `lastname`, `mail`, `telephone`, `a
 (16, 'Jakub', 'Seroka', 'kubax2208@gmail.com', '123 321 222', 24, 21, 'Jakub Seroka', 'kubax2208@gmail.com', '123 321 222', 24, 0),
 (22, 'admin', 'admin', 'admin@admin.com', '123123123', 7, 27, 'admin admin', 'admin@admin.com', '323 232 323', 7, 1),
 (23, 'admin', 'admin', 'admin@admin.com', '321312313', 7, 28, 'admin admin', 'admin@admin.com', '321 312 313', 7, 2),
-(24, 'admin', 'admin', 'admin@admin.com', '123123321', 7, 29, 'admin admin', 'admin@admin.com', '123 123 321', 7, 2);
+(24, 'admin', 'admin', 'admin@admin.com', '123123321', 7, 29, 'admin admin', 'admin@admin.com', '123 123 321', 7, 2),
+(25, 'admin', 'admin', 'admin@admin.com', '123123321', 7, 30, 'admin admin', 'admin@admin.com', '123 123 321', 7, 0),
+(26, 'admin', 'admin', 'admin@admin.com', '123123321', 7, 31, 'admin admin', 'admin@admin.com', '123 123 321', 7, 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +157,9 @@ INSERT INTO `order_details` (`id`, `total`, `payment_id`, `shipping_id`, `status
 (21, 100, 3, 1, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (27, 151, 3, 2, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (28, 100, 3, 2, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(29, 100, 3, 1, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(29, 100, 3, 1, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 200, 3, 2, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 400, 5, 2, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -179,7 +185,9 @@ INSERT INTO `order_product` (`order_id`, `product_id`, `quantity`) VALUES
 (21, 59, 1),
 (27, 30, 1),
 (28, 59, 1),
-(29, 59, 1);
+(29, 59, 1),
+(30, 71, 1),
+(31, 71, 2);
 
 -- --------------------------------------------------------
 
@@ -202,7 +210,8 @@ INSERT INTO `parameters` (`id`, `param_name`) VALUES
 (12, 'niga'),
 (13, 'Moc'),
 (14, 'guh'),
-(15, 'dsa');
+(15, 'dsa'),
+(16, 'Pochodzenie');
 
 -- --------------------------------------------------------
 
@@ -245,7 +254,10 @@ CREATE TABLE `photos` (
 INSERT INTO `photos` (`id`, `path`) VALUES
 (27, '../../img/testowy Gin_img.png'),
 (56, '../../img/tets123_img.png'),
-(59, '../../img/test_img.png');
+(59, '../../img/test_img.png'),
+(67, '../../img/Wino_img.png'),
+(68, '../../img/Singleton_img.png'),
+(69, '../../img/dsad_img.png');
 
 -- --------------------------------------------------------
 
@@ -270,7 +282,10 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`id`, `product_name`, `category_id`, `price`, `description`, `stock`, `photo_id`) VALUES
 (30, 'testowy Gin', 6, 151, 'teścik', 290, 27),
 (59, 'tets123', 6, 100, 'testowy opis produktu', 1234, 56),
-(62, 'test', 1, 2132, 'dsadas', 3, 59);
+(62, 'test', 1, 2132, 'dsadas', 3, 59),
+(70, 'Wino', 14, 50, 'Bardzo smaczne wino', 20, 67),
+(71, 'Singleton', 2, 200, 'Single Malt Whisky', 30, 68),
+(72, 'dsad', 2, 321, 'dsada', 32, 69);
 
 -- --------------------------------------------------------
 
@@ -291,7 +306,11 @@ CREATE TABLE `product-params` (
 INSERT INTO `product-params` (`product_id`, `param_id`, `param_value`) VALUES
 (30, 14, 'asd'),
 (59, 11, 'wartosc 1'),
-(62, 13, '40');
+(62, 13, '40'),
+(70, 16, '14%'),
+(71, 13, '40%'),
+(72, 13, '40%'),
+(72, 16, 'liberia');
 
 -- --------------------------------------------------------
 
@@ -371,7 +390,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `mail`, `login`, `pass`, `firstname`, `lastname`, `address_id`, `telephone`, `isAdmin`, `isActive`, `activationHash`, `create_date`, `mod_date`) VALUES
 (4, 'admin@admin.com', 'admin', '$2y$10$5uD5za5g99lQELGRNnC68eL3E6LbIojE9BG5.y4Tuf4LORB620dsS', 'admin', 'admin', 7, '123123321', 1, 1, '1232131313123123123', '2023-09-28 17:49:34', '2025-06-01 20:48:33'),
 (5, 'admin1@admin.com', 'admin1', '$2y$10$BGBnendFIOVYupzHoNeOsuu90KdIWzMA3txMPahrljHye9vtnmicu', 'admin1', 'admin1', 7, '000000000', 0, 1, '', '2023-09-28 00:00:00', '2025-05-26 19:57:57'),
-(18, 'kubax2208@gmail.com', 'jseroka', '$2y$10$sQfFIHs7b3WYsLTpKC40We/M4YxNlFfLbYoyCSJvHbSXGx.iNryGy', 'dsada', 'Seroka', 24, '213123123', 0, 1, '$2y$10$SJMWCPa80ULyy8k69GBp0OPaoNwD7xZFlvKmW/PKiIhCeFwPyY0vq', '2025-03-23 09:01:58', '2025-05-28 13:52:54');
+(18, 'kubax2208@gmail.com', 'jseroka', '$2y$10$sQfFIHs7b3WYsLTpKC40We/M4YxNlFfLbYoyCSJvHbSXGx.iNryGy', 'dsada', 'Seroka', 24, '213123123', 0, 1, '$2y$10$SJMWCPa80ULyy8k69GBp0OPaoNwD7xZFlvKmW/PKiIhCeFwPyY0vq', '2025-03-23 09:01:58', '2025-05-28 13:52:54'),
+(27, 'dsada@ds.ds', 'dsadsa', '$2y$10$LG1uzE4tWuXY0eQvXwq/7eMOkE.xZl5zH/QX6KR1zEEZUyoVDI1PG', 'dsadsa', 'dsada', 33, '222 222 2', 0, 1, '$2y$10$cROLM0zxAbmchHCrGl5RT.PsNdb5vYMqYXS6KF1dkwT9e/2/8nD3.', '2025-06-10 18:22:55', '0000-00-00 00:00:00');
 
 --
 -- Wyzwalacze `user`
@@ -406,6 +426,8 @@ INSERT INTO `user_order` (`user_id`, `order_id`) VALUES
 (4, 27),
 (4, 28),
 (4, 29),
+(4, 30),
+(4, 31),
 (18, 16),
 (18, 17),
 (18, 18),
@@ -527,13 +549,13 @@ ALTER TABLE `user_order`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `info_pages`
@@ -545,19 +567,19 @@ ALTER TABLE `info_pages`
 -- AUTO_INCREMENT for table `order_data`
 --
 ALTER TABLE `order_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `parameters`
 --
 ALTER TABLE `parameters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -569,13 +591,13 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `returns`
@@ -593,7 +615,7 @@ ALTER TABLE `shipping`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables

@@ -35,25 +35,32 @@ if (isset($_POST['filename'])) {
         $sql_name = 'insert into parameters(param_name) values(?)';
         $sql_value = 'insert into `product-params`(product_id, param_id, param_value) values(?, ?, ?)';
         while (isset($_POST['param_name' . $i]) && isset($_POST['param_value' . $i])) {
-            $temp = false;
-            $j = 0;
-            for ($j; $j < count($params); $j++) {
+            $param_id = 0;
+            $found = false;
+
+
+            for ($j = 0; $j < count($params); $j++) {
                 if ($params[$j][1] == $_POST['param_name' . $i]) {
-                    $temp = true;
+                    $param_id = $params[$j][0]; 
+                    $found = true;
+                    break; 
                 }
             }
-            $param_id = 0;
-            if ($temp) {
-                $param_id = $params[$j - 1][0];
-            } else {
+
+
+            if (!$found) {
                 $stmt_name = $pdo->prepare($sql_name);
                 $stmt_name->execute([$_POST['param_name' . $i]]);
                 $param_id = $pdo->lastInsertId();
             }
+
+
             $stmt_value = $pdo->prepare($sql_value);
             $stmt_value->execute([$product_id, $param_id, $_POST['param_value' . $i]]);
+
             $i++;
         }
+
         include './product.php';
     } else if ($file == "categories") {
         $sql = 'insert into category(category_name) values(?)';

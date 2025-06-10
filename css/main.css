@@ -360,7 +360,7 @@ p {
   justify-content: center;
 }
 .nav__dropdown--right img {
-  width: 150px;
+  width: 190px;
   height: 200px;
 }
 .nav__dropdown--right p {
@@ -1137,10 +1137,11 @@ p {
   margin-top: 150px;
 }
 .product__image {
-  width: 40%;
-  height: 100%;
+  width: 400px;
+  height: 500px;
   background-image: url(../img/placeholder_image.jpg);
   background-size: cover;
+  background-position: center;
 }
 .product__specs {
   width: 40%;
