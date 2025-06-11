@@ -1,13 +1,17 @@
 <?php
+
 ob_start();
 ?>
 <section class="products__left">
   <div class="products__filtersContainer">
     <h2 class="products__left--headline">Filtry</h2>
     <?php
-    require_once('../../php/dblogin.php');
+    require_once('../../php/dblogin.php'); // Ensure $pdo is initialized here
+
+    // Prepare the statement for fetching category ID
     $sql = 'select id from category where category_name like ?';
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($sql); // Fix: Prepare the statement using $pdo
+
     $arr = explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     $filename = pathinfo(array_pop($arr), PATHINFO_FILENAME);
     $arr = explode('-', $filename);
@@ -17,6 +21,14 @@ ob_start();
       $filename = $arr[1];
     }
 
+    // Add the mapping here
+    $categoryMapping = [
+        'wine-semisweet' => 'Wino półsłodkie',
+        'wine-dry' => 'Wino wytrawne',
+        // Add other mappings as needed
+    ];
+    $filename = $categoryMapping[$filename] ?? $filename;
+
     $category_id;
     if ($filename == "product_search") {
       $stmt->execute(['%']);
@@ -24,9 +36,7 @@ ob_start();
       while ($row = $stmt->fetch()) {
         array_push($category_id, $row['id']);
       }
-      // $category_id = implode(',', $category_id);
-      $category_id = "'".implode("', '",$category_id)."'" ;
-
+      $category_id = "'" . implode("', '", $category_id) . "'";
     } else {
       $stmt->execute([$filename]);
       $category_id = $stmt->fetchColumn();
@@ -47,10 +57,8 @@ ob_start();
   );
 SQL;
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($sql); // Prepare the statement for fetching parameters
     $stmt->execute([$category_id]);
-    // var_dump($stmt->fetchAll());
-    // var_dump($category_id);
     while ($paramRow = $stmt->fetchColumn()):
     ?>
       <h3 class="products__left--headline2"><?= $paramRow ?></h3>
@@ -80,5 +88,5 @@ SQL;
 </section>
 <?php
 $filters = ob_get_contents();
-ob_end_clean()
+ob_end_clean();
 ?>
