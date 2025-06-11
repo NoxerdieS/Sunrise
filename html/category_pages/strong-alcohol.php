@@ -43,23 +43,23 @@
       <section class="productCategories__right">
         <div class="productCategories__categoryContainer">
           <a href="./strong-whisky.php" href="./whisky.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Whisky">
+            <img src="../../img/whisky.png" alt="Whisky">
             <p>Whisky</p>
           </a>
           <a href="./strong-gin.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Gin">
+            <img src="../../img/gin.jpg" alt="Gin">
             <p>Gin</p>
           </a>
           <a href="./strong-wodka.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Wódka">
+            <img src="../../img/vodka.jpg" alt="Wódka">
             <p>Wódka</p>
           </a>
           <a href="./strong-rum.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Rum">
+            <img src="../../img/rum.jpg" alt="Rum">
             <p>Rum</p>
           </a>
           <a href="./strong-tequila.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Tequila">
+            <img src="../../img/tequila.jpg" alt="Tequila">
             <p>Tequila</p>
           </a>
         </div>

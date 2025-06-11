@@ -60,10 +60,10 @@ ob_start()
           <a href="<?=$path?>/category_pages/strong-tequila.php" class="link link-animation">Tequila</a>
         </div>
         <div class="nav__dropdown--right">
-          <img src="<?=$path?>/../img/placeholder_image.jpg" alt="">
-          <p>Lorem ipsum, quia dol</p>
-          <p>150zł</p>
-        </div>
+        <img src="<?= $path ?>/../img/whisky.png" alt="">
+        <p>Singleton</p>
+        <p>150zł</p>
+      </div>
       </div>
       <a href="<?=$path?>/category_pages/wine.php" class="nav__item link link-animation wine">Wina</a>
       <div class="nav__dropdown nav__dropdown--two">
@@ -74,10 +74,10 @@ ob_start()
           <a href="<?=$path?>/category_pages/wine-sparkling.php" class="link link-animation">Musujące</a>
         </div>
         <div class="nav__dropdown--right">
-          <img src="<?=$path?>/../img/placeholder_image.jpg" alt="">
-          <p>Lorem ipsum, quia dol</p>
-          <p>150zł</p>
-        </div>
+        <img src="<?= $path ?>/../img/wine.png" alt="">
+        <p>Wino</p>
+        <p>50zł</p>
+      </div>
       </div>
       <a href="<?=$path?>/category_pages/beer.php" class="nav__item link link-animation beer">Piwa</a>
       <div class="nav__dropdown nav__dropdown--three">
@@ -89,10 +89,10 @@ ob_start()
           <a href="<?=$path?>/category_pages/beer-pilzner.php" class="link link-animation">Pilzner</a>
         </div>
         <div class="nav__dropdown--right">
-          <img src="<?=$path?>/../img/placeholder_image.jpg" alt="">
-          <p>Lorem ipsum, quia dol</p>
-          <p>150zł</p>
-        </div>
+        <img src="<?= $path ?>/../img/piwo.jpg" alt="">
+        <p>Corona Extra</p>
+        <p>6zł</p>
+      </div>
       </div>
       <a href="<?=$path?>/category_pages/courses.php" class="nav__item link link-animation courses">Kursy</a>
     </div>

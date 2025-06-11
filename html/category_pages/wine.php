@@ -42,19 +42,19 @@
       <section class="productCategories__right">
         <div class="productCategories__categoryContainer">
           <a href="./wine-dry.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Wytrawne">
+            <img src="../../img/wine.png" alt="Wytrawne">
             <p>Wytrawne</p>
           </a>
           <a  href="./wine-sweet.php"class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Słodkie">
+            <img src="../../img/wine.png" alt="Słodkie">
             <p>Słodkie</p>
           </a>
           <a href="./wine-semisweet.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Półsłodkie">
+            <img src="../../img/wine.png" alt="Półsłodkie">
             <p>Półsłodkie</p>
           </a>
           <a href="./wine-sparkling.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Musujące">
+            <img src="../../img/wine.png" alt="Musujące">
             <p>Musujące</p>
           </a>
         </div>

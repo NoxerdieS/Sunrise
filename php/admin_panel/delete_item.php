@@ -52,9 +52,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $pdo->prepare('DELETE FROM order_product WHERE product_id = ?')->execute([$product_id]);
     $pdo->prepare('DELETE FROM `product-params` WHERE product_id = ?')->execute([$product_id]);
   } elseif ($_SESSION['table'] === 'user') {
-    $stmt = $pdo->prepare('SELECT address_id FROM user WHERE login LIKE ?');
+    $stmt = $pdo->prepare('SELECT id, address_id FROM user WHERE login LIKE ?');
     $stmt->execute([$_SESSION['name']]);
-    $address_id = $stmt->fetchColumn();
+    $user = $stmt->fetch();
+    $user_id = $user['id'];
+    $address_id = $user['address_id'];
+
+
+    $stmt = $pdo->prepare('SELECT order_id FROM user_order WHERE user_id = ?');
+    $stmt->execute([$user_id]);
+    $orders = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    foreach ($orders as $order_id) {
+      $pdo->prepare('DELETE FROM order_product WHERE order_id = ?')->execute([$order_id]);
+      $pdo->prepare('DELETE FROM returns WHERE order_id = ?')->execute([$order_id]);
+      $pdo->prepare('DELETE FROM order_data WHERE order_id = ?')->execute([$order_id]);
+      $pdo->prepare('DELETE FROM order_details WHERE id = ?')->execute([$order_id]);
+    }
+
+
+    $pdo->prepare('DELETE FROM user_order WHERE user_id = ?')->execute([$user_id]);
+    $stmt = $pdo->prepare('DELETE FROM user WHERE login LIKE ?');
+    $stmt->execute([$_SESSION['name']]);
+    $pdo->prepare('DELETE FROM address WHERE id = ?')->execute([$address_id]);
   }
 
   $stmt = $pdo->prepare('DELETE FROM ' . $_SESSION['table'] . ' WHERE ' . $_SESSION['column'] . ' LIKE ?');

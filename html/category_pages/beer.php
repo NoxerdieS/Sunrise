@@ -43,23 +43,23 @@
       <section class="productCategories__right">
         <div class="productCategories__categoryContainer">
           <a href="./beer-ipa.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="IPA">
+            <img src="../../img/piwo.jpg" alt="IPA">
             <p>IPA</p>
           </a>
           <a href="./beer-ale.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="ALE">
+            <img src="../../img/piwo.jpg" alt="ALE">
             <p>ALE</p>
           </a>
           <a href="./beer-lager.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Lager">
+            <img src="../../img/piwo.jpg" alt="Lager">
             <p>Lager</p>
         </a>
           <a href="./beer-stout.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Stout">
+            <img src="../../img/piwo.jpg" alt="Stout">
             <p>Stout</p>
           </a>
           <a href="./beer-pilzner.php" class="productCategories__categoryContainer--element">
-            <img src="../../img/placeholder_image.jpg" alt="Pilzner">
+            <img src="../../img/piwo.jpg" alt="Pilzner">
             <p>Pilzner</p>
           </a>
         </div>
