@@ -29,8 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   $photo_id = $address_id = $product_id = 0;
 
   if ($_SESSION['table'] === 'order_details') {
+
     $stmt = $pdo->prepare('DELETE FROM order_product WHERE order_id = ?');
     $stmt->execute([$_SESSION['name']]);
+
+
+    $stmt = $pdo->prepare('DELETE FROM returns WHERE order_id = ?');
+    $stmt->execute([$_SESSION['name']]);
+
 
     $stmt = $pdo->prepare('DELETE FROM order_data WHERE order_id = ?');
     $stmt->execute([$_SESSION['name']]);
@@ -40,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     header('Location: ../../html/admin_panel/orders.php');
     exit;
-  }
+}
 
   if ($_SESSION['table'] === "product") {
     $stmt = $pdo->prepare('SELECT id, photo_id FROM product WHERE product_name LIKE ?');

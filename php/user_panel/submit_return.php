@@ -18,7 +18,7 @@ $success = $stmt->execute([$order_id, $user_id, $reason]);
 if ($success) {
     $update = $pdo->prepare('UPDATE order_data SET status = 2 WHERE order_id = ?');
     $update->execute([$order_id]);
-    echo "<p>Zgłoszenie zostało przyjęte. Status zamówienia zaktualizowano.</p>";
+    echo "<p style='padding: 15px;'>Zgłoszenie zostało przyjęte. Status zamówienia zaktualizowano.</p>";
 } else {
     echo "<p class='error'>Wystąpił problem podczas przetwarzania zgłoszenia.</p>";
 }

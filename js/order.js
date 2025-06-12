@@ -154,6 +154,25 @@ orderBtn.addEventListener('mouseover', () => {
 	}
 });
 
+const calculateTotal = () => {
+    let totalValue = parseFloat(total.innerHTML); // Pobierz sumę produktów
+    const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+    const selectedPayment = document.querySelector('input[name="payment"]:checked');
+
+    let deliveryCost = 0;
+    let paymentCost = 0;
+
+    if (selectedDelivery) {
+        deliveryCost = parseFloat(selectedDelivery.parentElement.nextElementSibling.innerHTML.replace(' zł', ''));
+    }
+
+    if (selectedPayment) {
+        paymentCost = parseFloat(selectedPayment.parentElement.nextElementSibling?.innerHTML.replace(' zł', '') || 0);
+    }
+
+    return totalValue + deliveryCost + paymentCost;
+};
+
 orderBtn.addEventListener('click', (e) => {
 	orderBtn.disabled = true
 	const deliveryForm = document.querySelector('#delivery');
@@ -186,7 +205,7 @@ orderBtn.addEventListener('click', (e) => {
 			formData.append(pair[0], pair[1]);
 		}
 	}
-	let totalValue = parseFloat(total.innerHTML);
+	const totalValue = calculateTotal();
 	formData.append('total', totalValue);
 
 	fetch('../../php/place_order.php', {

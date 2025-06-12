@@ -209,6 +209,27 @@ if (isset($_SESSION['cart']) && empty($_SESSION['cart'])) {
               $price = $query2->fetchColumn();
               $total += $cart[$i][1] * $price;
             }
+
+            $shipping_cost = 0;
+            $payment_cost = 0;
+
+            if (isset($_POST['delivery'])) {
+              $sql = 'SELECT shipping_cost FROM shipping WHERE id = ?';
+              $query = $pdo->prepare($sql);
+              $query->execute([$_POST['delivery']]);
+              $shipping_cost = $query->fetchColumn();
+            }
+
+            $payment_cost = 0;
+            if (isset($_POST['payment'])) {
+              $sql = 'SELECT payment_cost FROM payment WHERE id = ?';
+              $query = $pdo->prepare($sql);
+              $query->execute([$_POST['payment']]);
+              $payment_percentage = $query->fetchColumn();
+              $payment_cost = $total * $payment_percentage; 
+            }
+
+            $total += $shipping_cost + $payment_cost;
             ?>
             <p class="price"><?= $total ?> zł</p>
           </div>
